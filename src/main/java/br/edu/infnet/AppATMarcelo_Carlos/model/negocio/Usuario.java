@@ -1,14 +1,14 @@
 package br.edu.infnet.AppATMarcelo_Carlos.model.negocio;
 
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +25,10 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name = "idUsuario")
 	private List<Produto> produtos;
+	@OneToMany
+	@JoinColumn(name = "idCliente")
+	private List<Cliente> clientes;
+	
 	
 	public int getId() {
 		return id;
@@ -62,6 +66,11 @@ public class Usuario {
 	public void setGit(String git) {
 		this.git = git;
 	}
-	
-	
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+		
 }

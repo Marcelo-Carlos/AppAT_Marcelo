@@ -16,9 +16,12 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome;
+	private String telefone;
+	private String cpf;
+	private String email;	
 	@ManyToOne
-	@JoinColumn(name = "idProduto")
-	private Produto produto;	
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
 	
 	public int getId() {
 		return id;
@@ -32,13 +35,29 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Produto getProduto() {
-		return produto;
+	public String getTelefone() {
+		return telefone;
 	}
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
-	
-
 }

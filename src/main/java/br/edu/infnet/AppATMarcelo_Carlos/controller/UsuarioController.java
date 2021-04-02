@@ -19,6 +19,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	//=========================================================================================
 	@PostMapping(value = "/usuario/login")
 	public String login(Model model, @RequestParam String email, @RequestParam String senha) {
 		
@@ -34,18 +35,21 @@ public class UsuarioController {
 
 	}
 	
+	//=========================================================================================
 	@GetMapping(value ="/index")
 	public String apresentar() {
 		return "index";
 	}
 	
+	//=========================================================================================
 	@GetMapping(value = "/usuario")
-	public String cadastrar(Model model) {
+	public String showUsuario(Model model) {
 		
-		model.addAttribute("usuarios", usuarioService.obterLista());		
+		model.addAttribute("lista", usuarioService.obterLista());		
 		return "usuario/detalhe";
 	}
 	
+	//=========================================================================================
 	@PostMapping(value = "/usuario/incluir")
 	public String incluir(Usuario usuario) {
 		
@@ -53,11 +57,19 @@ public class UsuarioController {
 		return "redirect:/usuario";
 	}
 	
+	//=========================================================================================
 	@GetMapping(value = "/usuario/{id}/excluir")
-	public String excluir(@PathVariable Integer id) {
-
-		usuarioService.excluir(id);
+	public String excluir(Model model, @PathVariable Integer id) {
+		
+		try {
+			usuarioService.excluir(id);			
+		} catch (Exception e) {
+			model.addAttribute("msg", "Não foi possivel excluir o cliente: " + e.getMessage());
+			return showUsuario(model);
+		}
+		
 		return "redirect:/usuario";
 	}
 
 }
+

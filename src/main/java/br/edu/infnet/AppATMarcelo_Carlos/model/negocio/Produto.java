@@ -17,7 +17,10 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;	
-	private String produto;
+	private String descricao;
+	private int quantidade;
+	private double valor;
+	private double total;
 	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
@@ -31,11 +34,12 @@ public class Produto {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getProduto() {
-		return produto;
+	
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setProduto(String produto) {
-		this.produto = produto;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public Cliente getCliente() {
 		return cliente;
@@ -49,7 +53,27 @@ public class Produto {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
+		//return this.total = getQuantidade() * getValor();	
+
+		
+	}	
 
 }

@@ -34,7 +34,7 @@ public class ProdutoService {
 	}
 	
 	public List<Produto> obterLista(Usuario usuario) {
-		return (List<Produto>)produtoRepository.obterLista(usuario.getId(), Sort.by(Sort.Direction.ASC, "produto"));
+		return (List<Produto>)produtoRepository.obterLista(usuario.getId(), Sort.by(Sort.Direction.ASC, "descricao"));
 		
 	}
 

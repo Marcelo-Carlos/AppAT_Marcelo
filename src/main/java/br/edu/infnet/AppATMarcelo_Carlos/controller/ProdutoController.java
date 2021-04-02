@@ -19,9 +19,8 @@ public class ProdutoController {
 	private ProdutoService produtoService;
 	@Autowired
 	private ClienteService clienteService;
-	
-	
-			
+
+	//=========================================================================================
 	@GetMapping(value = "/produto")
 	public String showProduto(Model model, @SessionAttribute("user") Usuario usuario) {
 		
@@ -30,16 +29,19 @@ public class ProdutoController {
 		return "produto/detalhe";
 	}
 	
+	//=========================================================================================
 	
 	@PostMapping(value = "/produto/incluir")
 	public String incluir(Produto produto, @SessionAttribute("user") Usuario usuario) {
 		
+		produto.setTotal(produto.getQuantidade() * produto.getValor());
 		produto.setUsuario(usuario);
 		produtoService.incluir(produto);
 		
 		return "redirect:/produto";
 	}
 	
+	//=========================================================================================
 	@GetMapping(value = "/produto/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		
