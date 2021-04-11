@@ -23,6 +23,7 @@ public class Cliente {
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
 	
+	
 	public int getId() {
 		return id;
 	}

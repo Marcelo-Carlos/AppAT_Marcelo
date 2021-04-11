@@ -45,7 +45,7 @@ public class UsuarioController {
 	@GetMapping(value = "/usuario")
 	public String showUsuario(Model model) {
 		
-		model.addAttribute("lista", usuarioService.obterLista());		
+		model.addAttribute("lista", usuarioService.obterLista());			
 		return "usuario/detalhe";
 	}
 	
@@ -64,7 +64,7 @@ public class UsuarioController {
 		try {
 			usuarioService.excluir(id);			
 		} catch (Exception e) {
-			model.addAttribute("msg", "Não foi possivel excluir o cliente: " + e.getMessage());
+			model.addAttribute("msg", "Não foi possivel excluir o usuário: " + e.getMessage());
 			return showUsuario(model);
 		}
 		

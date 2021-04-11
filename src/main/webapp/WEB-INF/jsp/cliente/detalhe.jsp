@@ -28,8 +28,7 @@ body {
 	<div class="container">
 		<h2>Cadastramento de clientes</h2>
 			<form action="/home">
-					<button type="submit">Home</button>
-			
+					<button type="submit">Home</button>			
 			</form>
 	
 		<c:if test="${not empty msg}">
